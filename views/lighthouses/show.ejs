@@ -1,4 +1,7 @@
-<section>
+<%- include('../partials/header') %>
+
+
+<section id="show-page">
     <div>Name: </div>
     <div><%= lighthouse.lighthouseName %></div>
     <div>Location: </div>
@@ -16,3 +19,14 @@
     <div>Did You Visit? </div>
     <div><%= lighthouse.visited %></div>
 </section>
+
+<h2>Reviews</h2>
+<% if (user) { %>
+<form id="add-review-form" method="POST"
+action="/lighthouses/<%= lighthouse._id %>/reviews">
+<label>Review:</label>
+<textarea name="content"></textarea>
+<input type="submit" value="Add Review">
+</form>
+<% } %>
+<%- include('../partials/header') %>

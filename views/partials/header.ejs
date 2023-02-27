@@ -9,13 +9,13 @@
 </head>
 <body>
 <nav>
-    <img src="/images/camera.svg">
+    <!-- <img src="https://icons8.com/icon/104770/lighthouse"> -->
     <a href="/lighthouses" <%- title === 'Lighthouse List' ? 'class="active"' : '' %>>LIGHTHOUSE LIST</a>
     <% if (user) { %>
-    
-      <a href="/logout">LOG OUT</a>
+        <a href="/lighthouses/new" <%- title === 'Add Lighthouse' ? 'class="active"' : '' %>>ADD LIGHTHOUSE</a>
+        <a href="/logout">LOG OUT</a>
     <% } else { %>
-      <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+        <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
     <% } %>
   </nav>
   <main>

@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 
-<form id="new-form" action="lighthouses" method="POST">
-    <label>Name:</label>
+<form id="new-form" action="/lighthouses" method="POST">
+    <label for="lighthouseName">Name:</label>
     <input type="text" name="lighthouseName">
     <label>Location:</label>
     <select name="state">
@@ -71,6 +71,6 @@
     </select>
     <label>Seen In Person?</label>
     <input type="checkbox" name="visited">
-    <input type="submit" value="Add Lighthouse">
+    <button type="submit">Add Lighthouse</button>
 </form>
 <%- include('../partials/footer') %>

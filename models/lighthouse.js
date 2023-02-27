@@ -16,7 +16,7 @@ const lighthouseSchema = new Schema({
     },
     state: {
         type: String,
-        enum: [AL, AK, AZ, AR, CA, CO, CT, DE, FL, GA, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MA, MI, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, OH, OK, OR, PA, RI, SC, SD, TN, TX, UT, VT, VA, WA, WV, WI, WY]
+        enum: ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY']
     },
     height: {
         type: Number,
@@ -25,7 +25,7 @@ const lighthouseSchema = new Schema({
     },
     yearFirstLit: {
         type: String,
-        enum: [1700-1990]
+        // enum: [1700-1990]
     },
     charasteristic: {
         type: String
@@ -37,12 +37,11 @@ const lighthouseSchema = new Schema({
     },
     visitorCanEnter: {
         type: String,
-        enum: [Yes, No]
+        enum: ['Yes', 'No']
     },
     visited: {
-        type: String,
-        enum: [Yes, No],
-        required: true
+        type: Boolean,
+        default: false
     }
 
 

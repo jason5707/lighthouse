@@ -17,14 +17,14 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect: '/lighthouse',
-    failureRedirect: '/lighthouse'
+    successRedirect: '/lighthouses',
+    failureRedirect: '/lighthouses'
   }
 ));
 
 router.get('/logout', function(req, res){
   req.logout(function() {
-    res.redirect('/lighthouse');
+    res.redirect('/lighthouses');
   });
 });
 
