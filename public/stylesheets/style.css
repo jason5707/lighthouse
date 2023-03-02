@@ -49,16 +49,19 @@ nav > a {
 
 .login img {
   height: 30px;
-} */ */
+} */ 
 
 
 * {
   box-sizing: border-box;
-  font-family: Helvetica;
-  color: #424748;
+  font-family: 'Poppins', sans-serif;
+  color: white;
 }
 
 body {
+  background-image: url(https://images.wallpaperscraft.com/image/single/lighthouse_night_vector_143019_2560x1600.jpg);
+  background-position: center;
+  background-size: cover;
   margin: 0;
   height: 100vh;
   display: grid;
@@ -70,7 +73,7 @@ body {
 
 body > nav {
   grid-area: nav;
-  background-color: #B8C0C2;
+  
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -88,7 +91,7 @@ body > main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #E8ECEB;
+  
   padding: 20px;
   overflow-y: scroll;
 }
@@ -118,6 +121,12 @@ nav > a.active {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(2, minmax(auto, 22rem));
+  position: relative;
+  width: 400px;
+  height: 500px; 
+  border: 2px solid rgba(255,255,255,0.5)
+
+
 }
 
 #new-form *,
@@ -153,23 +162,26 @@ table td {
 
 #list a {
   border-radius: 4px;
-  background-color: #B8C0C2;
+  border-style: solid;
+  background: transparent;
   padding: 4px;
   text-decoration: none;
   font-size: 14px;
 }
 
 #list a:hover {
-  background-color: white;
+  color: white;
+  background-color: #424748;
+  
 }
 
-#show-page {
+#Details {
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 1rem;
 }
 
-#show-page div:nth-child(even) {
+#Details div:nth-child(even) {
   font-weight: bold;
 }
 
@@ -225,10 +237,12 @@ li {
   justify-content: center;
   align-items: center;
   height: 34px;
+  background: transparent;
 }
 
 .login img {
   height: 30px;
+  
 }
 
 .review-user {
@@ -240,4 +254,15 @@ li {
 .review-user img {
   border-radius: 50%;
   height: 40px;
+}
+
+input {
+  background: transparent;
+}
+select {
+  background: transparent;
+}
+#list{
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.5)
 }

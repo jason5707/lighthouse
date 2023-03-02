@@ -12,7 +12,7 @@ module.exports = {
 function index(req, res) {
     Lighthouse.find({}, function(err, lighthouses) {
         //  console.log(lighthouses)
-        res.render('lighthouses/index', { title: 'All Lighthouses', lighthouses});
+        res.render('lighthouses/index', { title: 'Lighthouse Listing', lighthouses});
     });
 }
 async function show(req, res) {
