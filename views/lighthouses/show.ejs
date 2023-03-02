@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 
 
-<section id="show-page">
+<section id="Details">
     <div>Name: </div>
     <div><%= lighthouse.lighthouseName %></div>
     <div>Location: </div>
@@ -9,24 +9,57 @@
     <div>Height: </div>
     <div><%= lighthouse.height %></div>
     <div>Year First Lit: </div>
-    <div><%= lightouse.yearFirstLit %></div>
+    <div><%= lighthouse.yearFirstLit %></div>
     <div>Characteristic: </div>
     <div><%= lighthouse.characteristic %></div>
     <div>Light Range: </div>
     <div><%= lighthouse.range %></div>
-    <div>Can Visitor Enter? </div>
+    <div>Can Visitors Enter? </div>
     <div><%= lighthouse.visitorCanEnter %></div>
     <div>Did You Visit? </div>
-    <div><%= lighthouse.visited %></div>
+    <div><%= lighthouse.visited ? 'Yes' : 'Nope' %></div>
 </section>
 
 <h2>Reviews</h2>
 <% if (user) { %>
-<form id="add-review-form" method="POST"
-action="/lighthouses/<%= lighthouse._id %>/reviews">
-<label>Review:</label>
-<textarea name="content"></textarea>
-<input type="submit" value="Add Review">
-</form>
-<% } %>
+    <form id="add-review-form" method="POST"
+    action="/lighthouses/<%= lighthouse._id %>/reviews">
+    <label>Review:</label>
+    <textarea name="content"></textarea>
+    <input type="submit" value="Add Review">
+    </form>
+    <% } %>
+    <% if (lighthouse.reviews.length) { %>
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Review</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% lighthouse.reviews.forEach(function(r) { %>
+            <tr>
+                <td class="review-user"><img alt="avatar" src="<%= r.userAvatar %>" referrerpolicy="no-referrer" ><%= r.userName %></td>
+                <td><%= r.createdAt.toLocaleDateString() %></td>
+                <td><%= r.content %></td>
+                <td>
+                    <% if (user?._id.equals(r.user)) { %>
+                        <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
+                          <button type="submit">X</button>
+                        </form>
+                      <% } %>
+                </td>
+                </tr>
+       <% }); %>
+       <tr>
+        <td colspan="3"></td>
+      <td><strong><%= (lighthouse.reviews.length).toFixed(1) %></strong></td>
+       </tr>
+        </tbody>
+        </table>
+        <% } else { %>
+        <h5>No Reviews Yet</h5>
+    <% } %>
 <%- include('../partials/header') %>

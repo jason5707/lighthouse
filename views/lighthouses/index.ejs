@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-<table id="'list">
+<table id="list">
     <thead>
         <tr>
             <th>Name</th>
@@ -9,9 +9,9 @@
     <tbody>
         <% lighthouses.forEach(function(l) { %>
             <tr>
-                <td><%= l.name %></td>
+                <td><%= l.lighthouseName %></td>
                 <td><%= l.state %></td>
-                <td><a href="/lighthouses/show<%= l._id %>">DETAILS</a></td>
+                <td><a href="/lighthouses/show/<%= l._id %>">DETAILS</a></td>
             </tr>
             <% }); %>
     </tbody>
