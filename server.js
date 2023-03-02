@@ -17,6 +17,7 @@ require('./config/passport');
 
 
 
+
 var indexRouter = require('./routes/index');
 var lighthousesRouter = require('./routes/lighthouses');
 var reviewsRouter = require('./routes/reviews');
