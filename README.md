@@ -5,3 +5,5 @@ This is a basic program that allows you to manage lighthouse information. You ca
 
 
 Technologies Used: HTML, CSS, Javascript, Express.js, MongoDB and OAuth
+
+Next Steps: I'd like for users to be able to upload photos and make rewards or badges for those who visited alot of lighthouses and add their experience and details.
