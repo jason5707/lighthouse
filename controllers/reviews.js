@@ -3,9 +3,10 @@ const Lighthouse = require('../models/lighthouse');
 module.exports = {
     create,
     delete: deleteReview
+    // update: updateReview
 };
 async function deleteReview(req, res) {
-  let lighthouse =   Lighthouse.findById({'reviews._id': req.params.id, 'reviews.user': req.user._id}).then(function(movie) {
+  let lighthouse =  await Lighthouse.findById({'reviews._id': req.params.id, 'reviews.user': req.user._id}).then(function(lighthouse) {
         if (!lighthouse) {
             return res.redirect('/lighthouses');
         }
@@ -32,3 +33,7 @@ async function create(req, res) {
         });
     });
 }
+// function updateReview(req, res) {
+//     Lighthouse.findByIdAndUpdate(
+//         {'_id': req.params.lighthouse_id, 'reviews.id': req.params,review_id}
+// }

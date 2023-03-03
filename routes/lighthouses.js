@@ -7,6 +7,6 @@ router.get('/', lighthousesCtrl.index);
 router.get('/new', ensureLoggedIn, lighthousesCtrl.new);
 router.get('/show/:id', lighthousesCtrl.show);
 router.post('/', ensureLoggedIn, lighthousesCtrl.create);
-router.delete('/lighthouse/:id', lighthousesCtrl.delete);
+router.delete('/lighthouses/:id', ensureLoggedIn, lighthousesCtrl.delete);
 
 module.exports = router;
