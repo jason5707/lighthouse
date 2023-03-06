@@ -2,38 +2,55 @@ const Lighthouse = require('../models/lighthouse');
 
 module.exports = {
     create,
-    delete: deleteReview
-    // update: updateReview
+    delete: deleteReview,
+    show,
+    update
 };
 async function deleteReview(req, res) {
-  let lighthouse =  await Lighthouse.findById({'reviews._id': req.params.id, 'reviews.user': req.user._id}).then(function(lighthouse) {
-        if (!lighthouse) {
+  let lighthouse =  await Lighthouse.findOne({'reviews._id': req.params.id}) 
+  console.log('++++++++', lighthouse)
+          if (!lighthouse) {
             return res.redirect('/lighthouses');
         }
         lighthouse.reviews.pull(req.params.id);
-        lighthouse.save().then(function() {
-            res.redirect(`/lighthouses/${lighthouse._id}`);
+        await lighthouse.save()
+            res.redirect(`/lighthouses/show/${lighthouse._id}`);
+    }
 
-        }).catch(function(err) {
-            return next(err);
-        });
-    
-    });
-}
 async function create(req, res) {
- let lighthouse = await   Lighthouse.findById(req.params.id, function(err, lighthouse) {
+ let lighthouse = await   Lighthouse.findById(req.params.id) 
 
         req.body.user = req.user._id;
     req.body.userName = req.user.name;
     req.body.userAvatar = req.user.avatar;
 
         lighthouse.reviews.push(req.body);
-        lighthouse.save(function(err){
-            res.redirect(`/lighthouses/${lighthouse._id}`);
-        });
-    });
+        await lighthouse.save()
+            console.log('+++++', lighthouse)
+            res.redirect(`/lighthouses/show/${lighthouse._id}`);
+        
+   
 }
-// function updateReview(req, res) {
-//     Lighthouse.findByIdAndUpdate(
-//         {'_id': req.params.lighthouse_id, 'reviews.id': req.params,review_id}
-// }
+
+  function show(req, res) {
+    let id = req.params.id;
+    let reviewId = req.params.review_id;
+    Lighthouse.findById(id, function(err, lighthouse) {
+        const reviewUpdate = lighthouse.reviews.find(review => review._id ==
+            reviewId);
+        res.render('lighthouse/update', { title: 'Update Review', lighthouse, reviewUpdate});
+    })
+}
+function update(req, res) {
+    let id = req.params.id;
+    let reviewId = req.params.review_id;
+    let content = req.body.content;
+    lighthouse.findById(id, function(err, lighthouse) {
+        const reviewUpdate = lighthouse.reviews.find(review => review._id == reviewId);
+        reviewUpdate.content = req.body.content;
+        lighthouse.save(function(err) {
+            if (err) return res.redirect('/lighthouses');
+            return res.redirect(`/lighthouses/${req.params.id}`);
+        })
+    })
+}

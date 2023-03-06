@@ -20,12 +20,13 @@
     <div><%= lighthouse.visited ? 'Yes' : 'Nope' %></div>
 </section>
 
+
 <h2>Reviews</h2>
 <% if (user) { %>
     <form id="add-review-form" method="POST"
     action="/lighthouses/<%= lighthouse._id %>/reviews">
     <label>Review:</label>
-    <textarea name="content"></textarea>
+    <textarea name="content" id="review-text"></textarea>
     <input type="submit" value="Add Review">
     </form>
     <% } %>
@@ -49,6 +50,10 @@
                         <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
                           <button type="submit" method="delete">X</button>
                         </form>
+                        <form action="/reviews/<%= r._id %>?_method=UPDATE" method="PUT">
+                        <!-- <a href="/lighthouse<%= lighthouse.id %>/reviews/<%= r.id %>/update">Update Review</a> -->
+                        <button type="submit" method="update">Edit</button>
+                            </form>
                       <% } %>
                 </td>
                 </tr>

@@ -1,0 +1,10 @@
+<%- include('../partials/header') %>
+
+<form action="/lighthouses/<%= lighthouse.id %>/reviews/<%= reviewUpdate.id %>/update?_method=PUT" method="POST">
+    <textarea name="content" id="update-text" value="<%= reviewUpdate.content%>">Update Review</textarea>
+
+
+
+
+</form>
+<%- include('../partials/footer') %>

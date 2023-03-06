@@ -6,7 +6,8 @@ module.exports = {
     show,
     new: newLighthouse,
     create,
-    delete: deleteLighthouse
+    delete: deleteLighthouse,
+    update
 };
 
 function index(req, res) {
@@ -51,3 +52,24 @@ function deleteLighthouse(req, res) {
         Lighthouse.deleteOne(req.params.id);
         res.redirect('/lighthouses', lighthouse);
     }
+    // async function update(req, res) {
+    //     let lighthouse = await Lighthouse.findOne({'lighthouse._id': req.params.id}) 
+    //     console.log('++++', lighthouse)
+    //             lighthouse.lighthouse = res.body.lighthouse;
+    //             lighthouse.save(function(err) {
+    //                 res.redirect(`/lighthouses/${req.params.lighthouseId}`);
+    //             })
+    //         }
+            function update(req, res) {
+                let id = req.params.id;
+                let reviewId = req.params.review_id;
+                let content = req.body.content;
+                lighthouse.findById(id, function(err, lighthouse) {
+                    const reviewUpdate = lighthouse.reviews.find(review => review._id == reviewId);
+                    reviewUpdate.content = req.body.content;
+                    lighthouse.save(function(err) {
+                        if (err) return res.redirect('/lighthouses');
+                        return res.redirect(`/lighthouses/${req.params.id}`);
+                    })
+                })
+            }

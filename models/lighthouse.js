@@ -35,7 +35,7 @@ const lighthouseSchema = new Schema({
         min: 1700,
         max: 1990
     },
-    charasteristic: {
+    characteristic: {
         type: String
         
     },
