@@ -6,4 +6,8 @@ This is a basic program that allows you to manage lighthouse information. You ca
 
 Technologies Used: HTML, CSS, Javascript, Express.js, MongoDB and OAuth
 
+Trello Link: https://trello.com/b/cqioKnlY/project-2
+
+Lighthouse Link: https://quiet-taiga-33396.herokuapp.com/
+
 Next Steps: I'd like for users to be able to upload photos and make rewards or badges for those who visited alot of lighthouses and add their experience and details.
